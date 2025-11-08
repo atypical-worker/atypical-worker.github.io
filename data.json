@@ -1,0 +1,19 @@
+{
+  "users": [
+    {
+      "username": "testuser1",
+      "password": "dGVzdHBhc3Mx",
+      "balance": 1500
+    },
+    {
+      "username": "testuser2",
+      "password": "dGVzdHBhc3My",
+      "balance": 2300
+    },
+    {
+      "username": "testuser3",
+      "password": "dGVzdHBhc3Mz",
+      "balance": 850
+    }
+  ]
+}

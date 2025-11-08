@@ -3,19 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>會員登入 - 非典型就業青年多領域接案</title>
+    <title>會員登入 - 專業自由接案服務</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
         <nav>
             <div class="nav-container">
-                <div class="logo">非典型就業青年多領域接案</div>
+                <div class="logo">專業自由接案服務</div>
                 <ul class="nav-menu">
                     <li><a href="index.html">首頁</a></li>
                     <li><a href="services.html">服務項目</a></li>
                     <li><a href="about.html">關於我</a></li>
-                    <li><a href="login.html" id="loginLink">會員服務</a></li>
+                    <li><a href="login.html" id="loginLink">會員登入</a></li>
                     <li><a href="terms.html">使用條款</a></li>
                 </ul>
                 <div class="logout-btn" id="logoutBtn" style="display: none;">
@@ -76,7 +76,8 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2025 非典型就業青年多領域接案. 保留一切權利.</p>
+            <p>&copy; 2025 專業自由接案服務. 保留一切權利.</p>
+            <p>採用點數制服務模式 | 1點數 = 1新台幣</p>
         </div>
     </footer>
 
@@ -85,55 +86,89 @@
             document.querySelector('.nav-menu').classList.toggle('active');
         });
         
-        document.getElementById('loginForm').addEventListener('submit', function(e) {
+        async function loadUserData() {
+            try {
+                // 讀取 JSON 檔案
+                const response = await fetch('data.json');
+                const data = await response.json();
+                return data.users;
+            } catch (error) {
+                console.error('無法載入使用者資料:', error);
+                return [];
+            }
+        }
+        
+        document.getElementById('loginForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
             
-            // In a real implementation, this would verify credentials
-            // For demo, we'll just show a success message
-            alert('登入成功！');
+            // 讀取使用者資料
+            const users = await loadUserData();
             
-            // Store login state
-            localStorage.setItem('isLoggedIn', 'true');
-            localStorage.setItem('currentUser', username);
+            // 驗證使用者
+            const user = users.find(u => u.username === username && u.password === btoa(password));
             
-            // Update UI
-            document.getElementById('loginFormContainer').style.display = 'none';
-            document.getElementById('balanceSection').style.display = 'block';
-            document.getElementById('logoutBtn').style.display = 'block';
-            document.getElementById('loginLink').textContent = '會員服務';
-            
-            // Update balance (demo)
-            document.getElementById('balanceAmount').textContent = '點數餘額: 1,000 點';
-        });
-        
-        function logout() {
-            localStorage.removeItem('isLoggedIn');
-            localStorage.removeItem('currentUser');
-            
-            // Update UI
-            document.getElementById('loginFormContainer').style.display = 'block';
-            document.getElementById('balanceSection').style.display = 'none';
-            document.getElementById('logoutBtn').style.display = 'none';
-            document.getElementById('loginLink').textContent = '會員登入';
-            
-            // Clear form
-            document.getElementById('loginForm').reset();
-        }
-        
-        // Check login state on page load
-        window.addEventListener('load', function() {
-            const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
-            if (isLoggedIn) {
+            if (user) {
+                // 登入成功
+                localStorage.setItem('isLoggedIn', 'true');
+                localStorage.setItem('currentUser', username);
+                localStorage.setItem('currentBalance', user.balance);
+                
+                // 更新 UI
                 document.getElementById('loginFormContainer').style.display = 'none';
                 document.getElementById('balanceSection').style.display = 'block';
                 document.getElementById('logoutBtn').style.display = 'block';
                 document.getElementById('loginLink').textContent = '會員服務';
                 
-                // Update balance (demo)
-                document.getElementById('balanceAmount').textContent = '點數餘額: 1,000 點';
+                // 顯示餘額
+                document.getElementById('balanceAmount').textContent = `點數餘額: ${user.balance} 點`;
+                
+                alert('登入成功！');
+            } else {
+                alert('帳號或密碼錯誤！');
+            }
+        });
+        
+        function logout() {
+            localStorage.removeItem('isLoggedIn');
+            localStorage.removeItem('currentUser');
+            localStorage.removeItem('currentBalance');
+            
+            // 更新 UI
+            document.getElementById('loginFormContainer').style.display = 'block';
+            document.getElementById('balanceSection').style.display = 'none';
+            document.getElementById('logoutBtn').style.display = 'none';
+            document.getElementById('loginLink').textContent = '會員登入';
+            
+            // 清空表單
+            document.getElementById('loginForm').reset();
+        }
+        
+        // 檢查登入狀態
+        window.addEventListener('load', async function() {
+            const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+            if (isLoggedIn) {
+                const currentUser = localStorage.getItem('currentUser');
+                
+                // 讀取最新餘額
+                const users = await loadUserData();
+                const user = users.find(u => u.username === currentUser);
+                
+                if (user) {
+                    document.getElementById('loginFormContainer').style.display = 'none';
+                    document.getElementById('balanceSection').style.display = 'block';
+                    document.getElementById('logoutBtn').style.display = 'block';
+                    document.getElementById('loginLink').textContent = '會員服務';
+                    
+                    // 顯示最新餘額
+                    document.getElementById('balanceAmount').textContent = `點數餘額: ${user.balance} 點`;
+                } else {
+                    // 使用者不存在，登出
+                    logout();
+                }
             }
         });
     </script>
 </body>
+</html>
