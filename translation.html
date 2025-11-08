@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>多語翻譯 - 非典型就業青年多領域接案</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-container">
+                <div class="logo">非典型就業青年多領域接案</div>
+                <ul class="nav-menu">
+                    <li><a href="index.html">首頁</a></li>
+                    <li><a href="services.html">服務項目</a></li>
+                    <li><a href="about.html">關於我</a></li>
+                    <li><a href="login.html">會員登入</a></li>
+                    <li><a href="terms.html">使用條款</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h1>中英日文翻譯</h1>
+                <p>專業多語翻譯服務</p>
+            </div>
+        </section>
+
+        <section class="service-detail">
+            <div class="container">
+                <h2>服務內容</h2>
+                <ul>
+                    <li>中文翻譯</li>
+                    <li>英文翻譯</li>
+                    <li>日文翻譯</li>
+                    <li>技術文件翻譯</li>
+                    <li>商務文件翻譯</li>
+                </ul>
+
+                <h2>語言能力</h2>
+                <ul>
+                    <li>英文：多益 900分</li>
+                    <li>日文：日文 N1</li>
+                    <li>中文：母語水平</li>
+                    <li>專業領域：技術、商務、影視</li>
+                </ul>
+
+                <h2>服務作品</h2>
+                <div class="portfolio-grid">
+                    <div class="portfolio-item">
+                        <h3>技術文件</h3>
+                        <p>軟體說明書與技術規格翻譯</p>
+                    </div>
+                    <div class="portfolio-item">
+                        <h3>商務合約</h3>
+                        <p>國際商務合約與協議翻譯</p>
+                    </div>
+                    <div class="portfolio-item">
+                        <h3>影視字幕</h3>
+                        <p>電影、電視劇字幕翻譯</p>
+                    </div>
+                </div>
+
+                <h2>計費方式</h2>
+                <p>按字數計價</p>
+                <ul>
+                    <li>中文翻譯：每千字 300-500點數</li>
+                    <li>英文翻譯：每千字 400-600點數</li>
+                    <li>日文翻譯：每千字 500-800點數</li>
+                </ul>
+            </div>
+ </section>
+
+        <section class="contact">
+            <div class="container">
+                <h2>開始合作</h2>
+                <p>註冊會員後即可開始購買點數並使用服務</p>
+                <a href="register.html" class="btn-primary">前往註冊</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 非典型就業青年多領域接案. 保留一切權利.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelector('.hamburger').addEventListener('click', function() {
+            document.querySelector('.nav-menu').classList.toggle('active');
+        });
+        
+        function logout() {
+            localStorage.removeItem('isLoggedIn');
+            localStorage.removeItem('currentUser');
+            document.getElementById('loginLink').textContent = '會員登入';
+            window.location.reload();
+        }
+        
+        // Check login state on page load
+        window.addEventListener('load', function() {
+            const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+            if (isLoggedIn) {
+                document.getElementById('logoutBtn').style.display = 'block';
+                document.getElementById('loginLink').textContent = '會員服務';
+            }
+        });
+    </script>
+</body>
+</html>

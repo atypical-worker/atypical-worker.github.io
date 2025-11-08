@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>會員註冊 - 非典型就業青年多領域接案</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-container">
+                <div class="logo">非典型就業青年多領域接案</div>
+                <ul class="nav-menu">
+                    <li><a href="index.html">首頁</a></li>
+                    <li><a href="services.html">服務項目</a></li>
+                    <li><a href="about.html">關於我</a></li>
+                    <li><a href="login.html">會員登入</a></li>
+                    <li><a href="terms.html">使用條款</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h1>會員註冊</h1>
+                <p>請透過以下方式聯繫我們進行註冊</p>
+            </div>
+        </section>
+
+        <section class="register-section">
+            <div class="container">
+                <div class="contact-links-large">
+                    <a href="mailto:your-email@example.com" class="contact-btn-large">電子信箱</a>
+                    <a href="https://line.me/ti/p/your-line-id" target="_blank" class="contact-btn-large">LINE</a>
+                    <a href="https://www.facebook.com/your-facebook" target="_blank" class="contact-btn-large">Facebook</a>
+                </div>
+                <div class="register-info">
+                    <p>註冊後我們會手動為您建立帳戶，您將收到通知後即可開始使用服務</p>
+                    <p>請提供您的聯絡資訊及服務需求，我們會儘快與您聯繫</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 非典型就業青年多領域接案. 保留一切權利.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelector('.hamburger').addEventListener('click', function() {
+            document.querySelector('.nav-menu').classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

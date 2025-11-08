@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>網頁自動化爬蟲 - 非典型就業青年多領域接案</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-container">
+                <div class="logo">非典型就業青年多領域接案</div>
+                <ul class="nav-menu">
+                    <li><a href="index.html">首頁</a></li>
+                    <li><a href="services.html">服務項目</a></li>
+                    <li><a href="about.html">關於我</a></li>
+                    <li><a href="login.html">會員登入</a></li>
+                    <li><a href="terms.html">使用條款</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h1>網頁自動化爬蟲解決方案</h1>
+                <p>專業資料爬取與自動化解決方案，提升工作效率</p>
+            </div>
+        </section>
+
+        <section class="service-detail">
+            <div class="container">
+                <h2>服務內容</h2>
+                <ul>
+                    <li>網頁資料自動爬取</li>
+                    <li>複雜反爬蟲機制繞過</li>
+                    <li>資料清洗與格式化</li>
+                    <li>定期自動化任務</li>
+                    <li>API資料整合</li>
+                </ul>
+
+                <h2>技術堆疊</h2>
+                <ul>
+                    <li>爬蟲框架：Scrapy, Selenium</li>
+                    <li>程式語言：Python</li>
+                    <li>資料處理：Pandas, BeautifulSoup</li>
+                    <li>代理IP管理：Rotating Proxies</li>
+                </ul>
+
+                <h2>服務作品</h2>
+                <div class="portfolio-grid">
+                    <div class="portfolio-item">
+                        <h3>商品價格監控</h3>
+                        <p>自動爬取電商平台價格變化，生成報表</p>
+                    </div>
+                    <div class="portfolio-item">
+                        <h3>新聞資訊聚合</h3>
+                        <p>從多個新聞網站爬取並整合資訊</p>
+                    </div>
+                    <div class="portfolio-item">
+                        <h3>社交媒體分析</h3>
+                        <p>爬取社群平台資料進行趨勢分析</p>
+                    </div>
+                </div>
+
+                <h2>計費方式</h2>
+                <p>按小時計費或專案計價</p>
+                <ul>
+                    <li>基本爬蟲：每小時 200-500點數</li>
+                    <li>複雜爬蟲：每小時 500-1000點數</li>
+                    <li>專案計價：依複雜度評估</li>
+                </ul>
+            </div>
+        </section>
+        
+        <section class="contact">
+            <div class="container">
+                <h2>開始合作</h2>
+                <p>註冊會員後即可開始購買點數並使用服務</p>
+                <a href="register.html" class="btn-primary">前往註冊</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 非典型就業青年多領域接案. 保留一切權利.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelector('.hamburger').addEventListener('click', function() {
+            document.querySelector('.nav-menu').classList.toggle('active');
+        });
+        
+        function logout() {
+            localStorage.removeItem('isLoggedIn');
+            localStorage.removeItem('currentUser');
+            document.getElementById('loginLink').textContent = '會員登入';
+            window.location.reload();
+        }
+        
+        // Check login state on page load
+        window.addEventListener('load', function() {
+            const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+            if (isLoggedIn) {
+                document.getElementById('logoutBtn').style.display = 'block';
+                document.getElementById('loginLink').textContent = '會員服務';
+            }
+        });
+    </script>
+</body>
+</html>

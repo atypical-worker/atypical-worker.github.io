@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>插件開發 - 非典型就業青年多領域接案</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-container">
+                <div class="logo">非典型就業青年多領域接案</div>
+                <ul class="nav-menu">
+                    <li><a href="index.html">首頁</a></li>
+                    <li><a href="services.html">服務項目</a></li>
+                    <li><a href="about.html">關於我</a></li>
+                    <li><a href="login.html">會員登入</a></li>
+                    <li><a href="terms.html">使用條款</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h1>外掛插件開發</h1>
+                <p>影視動畫軟體外掛插件與輔助工具開發</p>
+            </div>
+        </section>
+
+        <section class="service-detail">
+            <div class="container">
+                <h2>服務內容</h2>
+                <ul>
+                    <li>影視軟體外掛開發</li>
+                    <li>動畫軟體輔助工具</li>
+                    <li>自動化腳本</li>
+                    <li>工作流程優化</li>
+                    <li>API整合</li>
+                </ul>
+
+                <h2>技術堆疊</h2>
+                <ul>
+                    <li>程式語言：Python, C++</li>
+                    <li>軟體支援：Maya, Houdini, Nuke, After Effects</li>
+                    <li>API框架：OpenMaya, PySide</li>
+                    <li>開發工具：Visual Studio</li>
+                </ul>
+
+                <h2>服務作品</h2>
+                <div class="portfolio-grid">
+                    <div class="portfolio-item">
+                        <h3>Maya工具集</h3>
+                        <p>提升Maya工作效率的工具集</p>
+                    </div>
+                    <div class="portfolio-item">
+                        <h3>Nuke節點</h3>
+                        <p>自定義Nuke合成節點</p>
+                    </div>
+                    <div class="portfolio-item">
+                        <h3>After Effects腳本</h3>
+                        <p>自動化AE工作流程腳本</p>
+                    </div>
+                </div>
+
+                <h2>計費方式</h2>
+                <p>按功能複雜度計價</p>
+                <ul>
+                    <li>基本插件：1000-5000點數</li>
+                    <li>中型插件：5000-15000點數</li>
+                    <li>大型插件系統：15000點數以上</li>
+                </ul>
+            </div>
+ </section>
+
+        <section class="contact">
+            <div class="container">
+                <h2>開始合作</h2>
+                <p>註冊會員後即可開始購買點數並使用服務</p>
+                <a href="register.html" class="btn-primary">前往註冊</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 非典型就業青年多領域接案. 保留一切權利.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelector('.hamburger').addEventListener('click', function() {
+            document.querySelector('.nav-menu').classList.toggle('active');
+        });
+        
+        function logout() {
+            localStorage.removeItem('isLoggedIn');
+            localStorage.removeItem('currentUser');
+            document.getElementById('loginLink').textContent = '會員登入';
+            window.location.reload();
+        }
+        
+        // Check login state on page load
+        window.addEventListener('load', function() {
+            const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+            if (isLoggedIn) {
+                document.getElementById('logoutBtn').style.display = 'block';
+                document.getElementById('loginLink').textContent = '會員服務';
+            }
+        });
+    </script>
+</body>
+</html>

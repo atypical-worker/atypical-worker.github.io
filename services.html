@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>服務項目 - 非典型就業青年多領域接案</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-container">
+                <div class="logo">非典型就業青年多領域接案</div>
+                <ul class="nav-menu">
+                    <li><a href="index.html">首頁</a></li>
+                    <li><a href="services.html">服務項目</a></li>
+                    <li><a href="about.html">關於我</a></li>
+                    <li><a href="login.html" id="loginLink">會員登入</a></li>
+                    <li><a href="terms.html">使用條款</a></li>
+                </ul>
+                <div class="logout-btn" id="logoutBtn" style="display: none;">
+                    <button onclick="logout()">登出</button>
+                </div>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h1>服務項目</h1>
+                <p>提供多元技術服務，滿足各種專案需求</p>
+            </div>
+        </section>
+
+        <section class="services-list">
+            <div class="container">
+                <div class="services-grid">
+                    <a href="web-development.html" class="service-card-large">
+                        <h3>網頁前後端開發</h3>
+                        <p>使用Vue.js、FastAPI、Flask等技術，打造高效能網頁應用</p>
+                    </a>
+                    <a href="web-crawling.html" class="service-card-large">
+                        <h3>網頁自動化爬蟲解決方案</h3>
+                        <p>專業資料爬取與自動化解決方案，提升工作效率</p>
+                    </a>
+                    <a href="app-development.html" class="service-card-large">
+                        <h3>桌面應用程式開發</h3>
+                        <p>跨平台桌面應用開發 (Windows, Linux, Mac)</p>
+                    </a>
+                    <a href="mobile-app.html" class="service-card-large">
+                        <h3>手機應用程式開發</h3>
+                        <p>Android與iOS應用程式開發，提供完整解決方案</p>
+                    </a>
+                    <a href="game-development.html" class="service-card-large">
+                        <h3>Unity, Godot遊戲開發</h3>
+                        <p>遊戲開發服務，從概念到成品</p>
+                    </a>
+                    <a href="video-production.html" class="service-card-large">
+                        <h3>廣告電視劇影視後製</h3>
+                        <p>專業影視後製服務</p>
+                    </a>
+                    <a href="animation.html" class="service-card-large">
+                        <h3>2D 3D動畫製作</h3>
+                        <p>使用專業軟體進行動畫製作</p>
+                    </a>
+                    <a href="plugin-development.html" class="service-card-large">
+                        <h3>外掛插件開發</h3>
+                        <p>影視動畫軟體外掛插件與輔助工具開發</p>
+                    </a>
+                    <a href="translation.html" class="service-card-large">
+                        <h3>中英日文翻譯</h3>
+                        <p>專業多語翻譯服務</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact">
+            <div class="container">
+                <h2>開始合作</h2>
+                <p>註冊會員後即可開始購買點數並使用服務</p>
+                <a href="register.html" class="btn-primary">前往註冊</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 非典型就業青年多領域接案. 保留一切權利.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelector('.hamburger').addEventListener('click', function() {
+            document.querySelector('.nav-menu').classList.toggle('active');
+        });
+        
+        function logout() {
+            localStorage.removeItem('isLoggedIn');
+            localStorage.removeItem('currentUser');
+            document.getElementById('loginLink').textContent = '會員登入';
+            window.location.reload();
+        }
+        
+        // Check login state on page load
+        window.addEventListener('load', function() {
+            const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+            if (isLoggedIn) {
+                document.getElementById('logoutBtn').style.display = 'block';
+                document.getElementById('loginLink').textContent = '會員服務';
+            }
+        });
+    </script>
+</body>
+</html>
